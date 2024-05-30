@@ -17,6 +17,9 @@ El usuario, a través de la vista, solicita ver el listado de viajes. Esta solic
 
 ## Captura de pantalla:
 - Inicio de sesión
+<img src="https://github.com/miguelmallquidiaz/Bus-Ticket-Booking-System/blob/main/img/img1.PNG" height="400px" alt="MVC Architecture">
+
+
 
 ## Instalación y configuración:
 - En XAMPP en la carpeta htdocs debes poner el proyecto
