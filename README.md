@@ -1,5 +1,5 @@
-# Sistema de Reserva de Boletos de Autobús 🚍🎫
-La empresa RedBus desea implementar un sistema innovador para gestionar la reserva y venta de boletos de manera presencial. Este sistema permitirá a los usuarios adquirir boletos de autobús de forma rápida y eficiente en las terminales de la empresa con el objetivo de optimizar el proceso de venta de boletos y reduciendo tiempos de espera.
+# Sistema de Reserva de Boletos de Bus 🚍🎫
+La empresa RedBus desea implementar un sistema innovador para gestionar la reserva y venta de boletos de manera presencial. Este sistema permitirá a los usuarios adquirir boletos para el bus de forma rápida y eficiente en las terminales de la empresa con el objetivo de optimizar el proceso de venta de boletos y reduciendo tiempos de espera.
 
 ## Arquitectura MVC
 <img src="https://github.com/miguelmallquidiaz/Bus-Ticket-Booking-System/blob/main/img/mvc.png" height="400px" alt="MVC Architecture">
