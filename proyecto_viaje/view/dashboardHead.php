@@ -19,12 +19,12 @@
     session_start();
     include_once '../controller/userController.php';
     include_once '../controller/RouteController.php';
-    require_once("c://xampp/htdocs/proyecto_viaje/controller/RouteController.php");
+    require_once("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/controller/RouteController.php");
     // Check if session variables are set and have correct values
     if (isset($_SESSION['correo']) && isset($_SESSION['rol']) && $_SESSION['rol'] === "e") {
         // Session is valid, display email and role
-        echo "Correo: " . $_SESSION['correo'] . "<br>";
-        echo "Rol: " . $_SESSION['rol'] . "<br>";
+        // echo "Correo: " . $_SESSION['correo'] . "<br>";
+        // echo "Rol: " . $_SESSION['rol'] . "<br>";
         // Rest of your adminMenu.php content...
     } else {
         // Session is invalid, redirect to index.php

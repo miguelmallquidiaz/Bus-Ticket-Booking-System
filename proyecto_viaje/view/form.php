@@ -1,5 +1,5 @@
 <?php
-require_once ("C:/xampp/htdocs/proyecto_viaje/controller/PassengerController.php");
+require_once ("C:/xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/controller/PassengerController.php");
 $obj = new PassengerController();
 
 $obj -> savePassenger($nom = $_POST["nom"],

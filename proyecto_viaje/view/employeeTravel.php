@@ -1,6 +1,6 @@
 <?php
-require_once ("c://xampp/htdocs/proyecto_viaje/view/dashboardHead.php");
-require_once ("c://xampp/htdocs/proyecto_viaje/controller/TripsController.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/view/dashboardHead.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/controller/TripsController.php");
 $obj = new TripsController();
 if (isset($_SESSION["idRuta"]) && isset($_SESSION["nomDep"])) {
     $idRuta = $_SESSION["idRuta"];
@@ -66,5 +66,5 @@ if (isset($_REQUEST["idRuta"]) && isset($_REQUEST["nomDep"])) {
 </div>
 </div>
 <?php
-require_once ("c://xampp/htdocs/proyecto_viaje/view/dashboardFooter.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/view/dashboardFooter.php");
 ?>

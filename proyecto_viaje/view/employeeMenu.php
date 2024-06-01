@@ -1,6 +1,6 @@
 <?php
-require_once ("c://xampp/htdocs/proyecto_viaje/view/dashboardHead.php");
-require_once ("c://xampp/htdocs/proyecto_viaje/controller/RouteController.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/view/dashboardHead.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/controller/RouteController.php");
 $obj = new RouteController();
 $rows = $obj->getPaths();
 ?>
@@ -50,5 +50,5 @@ $rows = $obj->getPaths();
 </div>
 </div>
 <?php
-require_once ("c://xampp/htdocs/proyecto_viaje/view/dashboardFooter.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/view/dashboardFooter.php");
 ?>

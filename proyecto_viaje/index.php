@@ -1,5 +1,5 @@
 <?php
-require_once ("C:/xampp/htdocs/proyecto_viaje/view/head/head.php");
+require_once ("C:/xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/view/head/head.php");
 ?>
 <h1>Inicio de sesión</h1>
 <form action="view/validateUser.php" method="POST" class="form login" id="loginForm">
@@ -25,5 +25,5 @@ require_once ("C:/xampp/htdocs/proyecto_viaje/view/head/head.php");
 </div>
 
 <?php
-require_once ("C:/xampp/htdocs/proyecto_viaje/view/head/footer.php");
+require_once ("C:/xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/view/head/footer.php");
 ?>

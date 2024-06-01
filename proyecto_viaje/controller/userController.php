@@ -4,16 +4,16 @@ class userController
     private $model;
     public function __construct()
     {
-        require_once ("C:/xampp/htdocs/proyecto_viaje/model/userModel.php");
+        require_once ("C://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/model/userModel.php");
         $this->model = new userModel();
     }
     public function seeValidUser($email, $password)
     {
         $user = $this->model->getUserByEmail($email, $password);
-        $fullName = $user['usr_name'] . " " . $user['usr_flastname'] . " " . $user['usr_mlastname'];
         if ($user) {
             // Éxito: Redirigir a la página deseada
             if ($user['usr_role'] === 'e') {
+                $fullName = $user['usr_name'] . " " . $user['usr_flastname'] . " " . $user['usr_mlastname'];
                 session_start();
                 $_SESSION['correo'] = $user['usr_email'];
                 $_SESSION['rol'] = $user['usr_role'];

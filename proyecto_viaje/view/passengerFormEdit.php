@@ -1,6 +1,6 @@
 <?php
-require_once ("c://xampp/htdocs/proyecto_viaje/view/dashboardHead.php");
-require_once ("c://xampp/htdocs/proyecto_viaje/controller/PassengerController.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/view/dashboardHead.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/controller/PassengerController.php");
 $obj = new PassengerController();
 $idViaje = $_SESSION["idViaje"];
 $costoViaje = $_SESSION["cost"];
@@ -8,7 +8,7 @@ $idRuta = $_SESSION["idRuta"];
 $nomDep = $_SESSION["nomDep"];
 $codPassenger = $_REQUEST["codPassenger"];
 $vec = $obj->seatNumberList($idViaje);
-$vecPassenger = $obj->getAllPassenger($codPassenger);
+$vecPassenger = $obj->getAllPassenger($codPassenger, $idViaje);
 $code = "";
 //Al momento de selecionar guardarlo en $code
 if (isset($_REQUEST["cbc"])) {
@@ -44,23 +44,25 @@ if (isset($_REQUEST["cbc"])) {
                 </div>
                 <div class="card-body">
                     <div class="container">
-                        <form action="form.php" method="POST" name="fr" id="loginForm">
+                        <form action="updateSeat.php" method="POST" name="fr" id="loginForm">
                             <div class="row">
                                 <div class="col mt-3">
                                     <label for="inputNombre">Nombre</label>
                                     <input type="text" name="nom" class="form-control" placeholder="Nombre"
-                                        id="inputNombre"
-                                        value="<?php if (isset($vecPassenger))
-                                            echo $vecPassenger[0]['pa_name']; ?>" required>
+                                        id="inputNombre" value="<?php if (!empty($vecPassenger))
+                                            echo $vecPassenger[0]['pa_name']; ?>" disabled>
+                                    <input type="hidden" name="nom_hidden" value="<?php if (!empty($vecPassenger))
+                                        echo htmlspecialchars($vecPassenger[0]['pa_name']); ?>" required>
                                     <span class="error-nombre"></span>
                                 </div>
 
                                 <div class="col mt-3">
                                     <label for="inputApePa">Apellido Paterno</label>
                                     <input type="text" name="apePa" class="form-control" placeholder="Apellido Paterno"
-                                        id="inputApePa"
-                                        value="<?php if (isset($vecPassenger))
-                                            echo $vecPassenger[0]['pa_flastname']; ?>" required>
+                                        id="inputApePa" value="<?php if (!empty($vecPassenger))
+                                            echo $vecPassenger[0]['pa_flastname']; ?>" disabled>
+                                    <input type="hidden" name="apePa_hidden" value="<?php if (!empty($vecPassenger))
+                                        echo htmlspecialchars($vecPassenger[0]['pa_flastname']); ?>" required>
                                     <span class="error-apePa"></span>
                                 </div>
                             </div>
@@ -68,17 +70,19 @@ if (isset($_REQUEST["cbc"])) {
                                 <div class="col mt-3">
                                     <label for="inputApeMa">Apellido Materno</label>
                                     <input type="text" name="apeMa" class="form-control" placeholder="Apellido Materno"
-                                        id="inputApeMa"
-                                        value="<?php if (isset($vecPassenger))
-                                            echo $vecPassenger[0]['pa_mlastname']; ?>" required>
+                                        id="inputApeMa" value="<?php if (!empty($vecPassenger))
+                                            echo $vecPassenger[0]['pa_mlastname']; ?>" disabled>
+                                    <input type="hidden" name="apeMa_hidden" value="<?php if (!empty($vecPassenger))
+                                        echo htmlspecialchars($vecPassenger[0]['pa_mlastname']); ?>" required>
                                     <span class="error-apeMa error-active"></span>
                                 </div>
                                 <div class="col mt-3">
                                     <label for="inputDni">DNI</label>
                                     <input type="number" name="dni" class="form-control" placeholder="Dni" id="inputDni"
-                                        required maxlength="8"
-                                        value="<?php if (isset($vecPassenger))
-                                            echo $vecPassenger[0]['pa_dni']; ?>">
+                                        maxlength="8" value="<?php if (!empty($vecPassenger))
+                                            echo $vecPassenger[0]['pa_dni']; ?>" disabled>
+                                    <input type="hidden" name="dni_hidden" value="<?php if (!empty($vecPassenger))
+                                        echo htmlspecialchars($vecPassenger[0]['pa_dni']); ?>" required>
                                     <span class="error-dni error-active"></span>
                                 </div>
                             </div>
@@ -86,17 +90,19 @@ if (isset($_REQUEST["cbc"])) {
                                 <div class="col mt-3">
                                     <label for="inputCelular">Celular</label>
                                     <input type="number" name="cel" class="form-control" placeholder="Celular"
-                                        id="inputCelular" required maxlength="9"
-                                        value="<?php if (isset($vecPassenger))
-                                            echo $vecPassenger[0]['pa_phone']; ?>">
+                                        id="inputCelular" maxlength="9" value="<?php if (!empty($vecPassenger))
+                                            echo $vecPassenger[0]['pa_phone']; ?>" disabled>
+                                    <input type="hidden" name="phone_hidden" value="<?php if (!empty($vecPassenger))
+                                        echo htmlspecialchars($vecPassenger[0]['pa_phone']); ?>" required>
                                     <span class="error-celular"></span>
                                 </div>
                                 <div class="col mt-3">
                                     <label for="inputEmail">Correo</label>
                                     <input type="email" name="correo" class="form-control" placeholder="Correo"
-                                        id="inputEmail" required
-                                        value="<?php if (isset($vecPassenger))
-                                            echo $vecPassenger[0]['pa_email']; ?>">
+                                        id="inputEmail" value="<?php if (!empty($vecPassenger))
+                                            echo $vecPassenger[0]['pa_email']; ?>" disabled>
+                                    <input type="hidden" name="email_hidden" value="<?php if (!empty($vecPassenger))
+                                        echo htmlspecialchars($vecPassenger[0]['pa_email']); ?>" required>
                                     <span class="error-email error-active"></span>
                                 </div>
                             </div>
@@ -105,10 +111,10 @@ if (isset($_REQUEST["cbc"])) {
                                     <label for="cbc">Nro de asiento</label>
                                     <select class="form-select" name="cbc" id="cbc" required>
                                         <option value=""><?php if (isset($vecPassenger))
-                                            echo $vecPassenger[0]['pa_seat']; ?>
+                                            echo $vecPassenger[0]['re_seat']; ?>
                                         </option>
                                         <?php
-                                        $occupiedSeats = array_column($vec, 'pa_seat');
+                                        $occupiedSeats = array_column($vec, 're_seat');
                                         $maxSeats = 20;
                                         for ($i = 1; $i <= $maxSeats; $i++) {
                                             if (in_array($i, $occupiedSeats)) {
@@ -126,7 +132,7 @@ if (isset($_REQUEST["cbc"])) {
                             </div>
                             <!--Tipo de pasajero-->
                             <?php
-                            $tpa = $vecPassenger[0]['pa_type'];
+                            $tpa = $vecPassenger[0]['re_type'];
                             $varN = "";
                             if ($tpa == 'n') {
                                 $varN = 'checked=""';
@@ -152,19 +158,19 @@ if (isset($_REQUEST["cbc"])) {
                             <div class="row">
                                 <div class="col mt-3">
                                     <span>Tipo de pasajero: </span>
-                                    <input class="form-check-input" type="radio" name="tp" value="n" <?=$varN?>
+                                    <input class="form-check-input" type="radio" name="tp" value="n" <?= $varN ?>
                                         onclick="calculo(1)" required>Niño
-                                    <input class="form-check-input" type="radio" name="tp" value="e" <?=$varE?>
+                                    <input class="form-check-input" type="radio" name="tp" value="e" <?= $varE ?>
                                         onclick="calculo(2)" required>Estudiante
-                                    <input class="form-check-input" type="radio" name="tp" value="a" <?=$varA?>
+                                    <input class="form-check-input" type="radio" name="tp" value="a" <?= $varA ?>
                                         onclick="calculo(3)" required>Adulto
                                 </div>
                                 <div class="col mt-3">
                                     <label for="pago">Costo:</label>
-                                    <input name="pago" id="pago"
-                                        value="<?php if (isset($vecPassenger))
-                                            echo $vecPassenger[0]['pa_cost']; ?>">
+                                    <input name="pago" id="pago" value="<?php if (isset($vecPassenger))
+                                        echo $vecPassenger[0]['re_cost']; ?>" readonly>
                                     <input type="hidden" name="codc" value="<?= $idViaje ?>">
+                                    <input type="hidden" name="passengerId" value="<?= $codPassenger ?>">
                                 </div>
                             </div>
                             <div class="text-center mt-3 d-grid gap-2 col-6 mx-auto">
@@ -178,7 +184,6 @@ if (isset($_REQUEST["cbc"])) {
         </div>
     </main>
 </div>
-<script src="../js/validatePassengerForm.js"></script>
 <script>
     const cbcSelect = document.getElementById('cbc');
     cbcSelect.onchange = submitComboboxSelection;
@@ -198,9 +203,8 @@ if (isset($_REQUEST["cbc"])) {
             pg = costo;
         }
         fr.pago.value = pg;
-        // document.getElementById("pago").value = pg;
     }
 </script>
 <?php
-require_once ("c://xampp/htdocs/proyecto_viaje/view/dashboardFooter.php");
+require_once ("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/view/dashboardFooter.php");
 ?>

@@ -5,21 +5,22 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Panel de administrador</title>
+    <title>RedBus</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="assets/bus.svg">
+    <link rel="icon" type="image/png" href="../assets/bus.svg">
 </head>
 
 <body class="sb-nav-fixed">
     <?php
     session_start();
+    include_once '../controller/userController.php';
+    include_once '../controller/RouteController.php';
+    require_once("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/controller/RouteController.php");
 
     // Check if session variables are set and have correct values
-    if (isset($_SESSION['correo']) && isset($_SESSION['rol']) && $_SESSION['rol'] === "A") {
+    if (isset($_SESSION['correo']) && isset($_SESSION['rol']) && $_SESSION['rol'] === "a") {
         // Session is valid, display email and role
         echo "Correo: " . $_SESSION['correo'] . "<br>";
         echo "Rol: " . $_SESSION['rol'] . "<br>";
@@ -27,16 +28,16 @@
         // Rest of your adminMenu.php content...
     } else {
         // Session is invalid, redirect to index.php
-        header("location: index.php");
+        header("location: ../index.php");
         exit(); // Prevent further execution of the script
     }
 
-    include_once 'Controller/Negocio.php';
-    $obj = new Negocio();
-    $vec = $obj->listadoRuta();
+    // include_once 'Controller/Negocio.php';
+    // $obj = new Negocio();
+    // $vec = $obj->listadoRuta();
 
     $email = $_SESSION['correo'];
-    $nombreCompleto = $obj->consultarNombreUsuario($email);
+    // $nombreCompleto = $obj->consultarNombreUsuario($email);
     ?>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
@@ -129,11 +130,11 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+    <script src="../js/datatables-simple-demo.js"></script>
 </body>
 
 </html>

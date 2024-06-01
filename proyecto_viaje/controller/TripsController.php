@@ -5,7 +5,7 @@ class TripsController
     
     public function __construct()
     {
-        require_once ("C:/xampp/htdocs/proyecto_viaje/model/TripsModel.php");
+        require_once ("C://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/model/TripsModel.php");
         $this->model = new TripsModel();
     }
 

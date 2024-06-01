@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2024 a las 03:28:28
+-- Tiempo de generación: 01-06-2024 a las 23:17:58
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -88,29 +88,42 @@ CREATE TABLE `passengers` (
   `pa_mlastname` varchar(30) NOT NULL,
   `pa_dni` char(8) NOT NULL,
   `pa_phone` char(9) NOT NULL,
-  `pa_email` varchar(30) NOT NULL,
-  `pa_seat` char(2) NOT NULL,
-  `pa_type` char(1) NOT NULL,
-  `pa_cost` decimal(5,2) NOT NULL,
-  `trip_id` int(11) NOT NULL
+  `pa_email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `passengers`
 --
 
-INSERT INTO `passengers` (`pa_id`, `pa_name`, `pa_flastname`, `pa_mlastname`, `pa_dni`, `pa_phone`, `pa_email`, `pa_seat`, `pa_type`, `pa_cost`, `trip_id`) VALUES
-(1, 'juan', 'garcía', 'lópez', '76522142', '976456345', 'juan@gmail.com', '1', 'e', 25.00, 3),
-(2, 'maría', 'martínez', 'gómez', '78765432', '956789012', 'maria@gmail.com', '2', 'e', 25.00, 4),
-(3, 'pedro', 'rodríguez', 'sánchez', '77654321', '945678901', 'pedro@gmail.com', '3', 'a', 50.00, 5),
-(4, 'angel', 'mallqui', 'diaz', '77890654', '997654678', 'angel123@gmail.com', '11', 'e', 25.00, 3),
-(8, 'melani', 'sanchez', 'casandra', '72162625', '962626272', 'melani@gmail.com', '10', 'e', 25.00, 3),
-(18, 'juaquin', 'mallqui', 'diaz', '72525252', '928282822', 'juaquin@gmail.com', '16', 'e', 25.00, 3),
-(19, 'carlos', 'sanchez', 'mendoza', '72162665', '928383822', 'carlos@gmail.com', '18', 'n', 15.00, 3),
-(21, 'frank', 'maldonado', 'gutierrez', '72617399', '973737182', 'frank@gmail.com', '8', 'a', 50.00, 3),
-(23, 'david', 'flores', 'sánchez', '68765432', '922345678', 'david.f@gmail.com', '15', 'e', 25.00, 3),
-(24, 'diego', 'muñoz', 'alvarez', '62109876', '923454326', 'diego.m@gmail.com', '14', 'e', 25.00, 3),
-(25, 'elena', 'sanchez', 'perez', '61098765', '923454327', 'elena.s@gmail.com', '4', 'e', 25.00, 3);
+INSERT INTO `passengers` (`pa_id`, `pa_name`, `pa_flastname`, `pa_mlastname`, `pa_dni`, `pa_phone`, `pa_email`) VALUES
+(26, 'miguel', 'mallqui', 'diaz', '73612435', '944741052', 'miguel@gmail.com'),
+(27, 'juan', 'salazar', 'mendoza', '78772215', '994734054', 'juansala@gmail.com'),
+(28, 'juan', 'solis', 'salazar', '73463263', '937372726', 'juan123@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reservations`
+--
+
+CREATE TABLE `reservations` (
+  `re_id` int(11) NOT NULL,
+  `pa_id` int(11) NOT NULL,
+  `trip_id` int(11) NOT NULL,
+  `re_seat` char(2) NOT NULL,
+  `re_type` char(1) NOT NULL,
+  `re_cost` decimal(5,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `reservations`
+--
+
+INSERT INTO `reservations` (`re_id`, `pa_id`, `trip_id`, `re_seat`, `re_type`, `re_cost`) VALUES
+(1, 26, 5, '14', 'a', 50.00),
+(2, 27, 5, '18', 'e', 25.00),
+(3, 28, 5, '12', 'a', 50.00),
+(7, 26, 3, '12', 'e', 25.00);
 
 -- --------------------------------------------------------
 
@@ -216,7 +229,15 @@ ALTER TABLE `passengers`
   ADD PRIMARY KEY (`pa_id`),
   ADD UNIQUE KEY `pa_email` (`pa_email`),
   ADD UNIQUE KEY `pa_dni_unique` (`pa_dni`),
-  ADD UNIQUE KEY `pa_phone_unique` (`pa_phone`),
+  ADD UNIQUE KEY `pa_phone_unique` (`pa_phone`);
+
+--
+-- Indices de la tabla `reservations`
+--
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`re_id`),
+  ADD UNIQUE KEY `unique_reservation` (`pa_id`,`trip_id`),
+  ADD KEY `pa_id` (`pa_id`),
   ADD KEY `trip_id` (`trip_id`);
 
 --
@@ -262,7 +283,13 @@ ALTER TABLE `drivers`
 -- AUTO_INCREMENT de la tabla `passengers`
 --
 ALTER TABLE `passengers`
-  MODIFY `pa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `pa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT de la tabla `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `re_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `routes`
@@ -287,10 +314,11 @@ ALTER TABLE `users`
 --
 
 --
--- Filtros para la tabla `passengers`
+-- Filtros para la tabla `reservations`
 --
-ALTER TABLE `passengers`
-  ADD CONSTRAINT `passengers_ibfk_1` FOREIGN KEY (`trip_id`) REFERENCES `trips` (`trip_id`);
+ALTER TABLE `reservations`
+  ADD CONSTRAINT `re_ibfk_1` FOREIGN KEY (`pa_id`) REFERENCES `passengers` (`pa_id`),
+  ADD CONSTRAINT `re_ibfk_2` FOREIGN KEY (`trip_id`) REFERENCES `trips` (`trip_id`);
 
 --
 -- Filtros para la tabla `trips`

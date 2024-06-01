@@ -5,7 +5,7 @@ class TripsModel
 
     public function __construct()
     {
-        require_once ("C:/xampp/htdocs/proyecto_viaje/config/db.php");
+        require_once ("C:/xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/config/db.php");
         $con = new db();
         $this->PDO = $con->connect();
     }
@@ -40,5 +40,4 @@ class TripsModel
             return array(); // Retornar un array vacío en caso de error
         }
     }
-
 }

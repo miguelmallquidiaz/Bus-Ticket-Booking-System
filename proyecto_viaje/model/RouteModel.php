@@ -2,7 +2,7 @@
 class RouteModel {
     private $PDO;
     public function __construct(){
-        require_once("C:/xampp/htdocs/proyecto_viaje/config/db.php");
+        require_once("C:/xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/config/db.php");
         $con = new db();
         $this->PDO = $con->connect();
     }
