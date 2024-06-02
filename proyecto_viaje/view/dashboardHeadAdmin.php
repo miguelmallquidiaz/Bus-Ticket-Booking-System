@@ -22,7 +22,7 @@
     require_once("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/controller/RouteController.php");
     require_once("c://xampp/htdocs/Bus-Ticket-Booking-System/proyecto_viaje/controller/userController.php");
     // Check if session variables are set and have correct values
-    if (isset($_SESSION['correo']) && isset($_SESSION['rol']) && $_SESSION['rol'] === "e") {
+    if (isset($_SESSION['correo']) && isset($_SESSION['rol']) && $_SESSION['rol'] === "a") {
     } else {
         header("location: ../index.php");
         exit(); // Prevent further execution of the script
@@ -36,7 +36,7 @@
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <span class="navbar-brand ps-3">Panel de empleado</span>
+        <span class="navbar-brand ps-3">Panel de Administrador</span>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -62,14 +62,18 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Menú</div>
-                        <a class="nav-link" href="employeeMenu.php">
+                        <a class="nav-link" href="adminMenu.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Empleado
+                        </a>
+                        <a class="nav-link" href="adminRoute.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Rutas
                         </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Conectado como:</div>
+                    <div class="small">Conectado como: </div>
                     <span><?= $nombre . " " . $apellido ?></span>
                 </div>
             </nav>

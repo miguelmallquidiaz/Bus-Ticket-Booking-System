@@ -40,4 +40,18 @@ class TripsModel
             return array(); // Retornar un array vacío en caso de error
         }
     }
+
+    public function saveTrip($bus_id, $route_id, $driver_id, $trip_time, $trip_date)
+    {
+        // Preparar la consulta
+        $statement = $this->PDO->prepare("INSERT INTO trips (bus_id, route_id, driver_id, trip_time, trip_date) 
+        VALUES (:bus_id, :route_id, :driver_id, :trip_time, :trip_date)");
+        // Vincular parámetro y ejecutar consulta
+        $statement->bindParam(":bus_id", $bus_id);
+        $statement->bindParam(":route_id", $route_id);
+        $statement->bindParam(":driver_id", $driver_id);
+        $statement->bindParam(":trip_time", $trip_time);
+        $statement->bindParam(":trip_date", $trip_date);
+        return $statement->execute();
+    }
 }

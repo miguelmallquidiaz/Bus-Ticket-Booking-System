@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2024 a las 23:17:58
+-- Tiempo de generación: 02-06-2024 a las 05:53:05
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -177,7 +177,8 @@ INSERT INTO `trips` (`trip_id`, `bus_id`, `route_id`, `driver_id`, `trip_time`, 
 (2, 2, 9, 2, '09:30:00', '2023-02-07'),
 (3, 3, 4, 3, '20:30:00', '2024-06-13'),
 (4, 2, 4, 2, '08:00:00', '2024-06-13'),
-(5, 1, 8, 7, '13:30:00', '2024-06-13');
+(5, 1, 8, 7, '13:30:00', '2024-06-13'),
+(6, 3, 8, 4, '08:30:00', '2024-06-20');
 
 -- --------------------------------------------------------
 
@@ -202,7 +203,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`usr_id`, `usr_email`, `usr_password`, `usr_name`, `usr_flastname`, `usr_mlastname`, `usr_phone`, `usr_role`) VALUES
 (1, 'miguel@gmail.com', '088ef99bff55c67dc863f83980a66a9b', 'miguel', 'mallqui', 'diaz', '945678567', 'e'),
-(2, 'diego@gmail.com', '91f5167c34c400758115c2a6826ec2e3', 'diego', 'lopez', 'sanchez', '999678227', 'a');
+(2, 'diego@gmail.com', '91f5167c34c400758115c2a6826ec2e3', 'diego', 'lopez', 'sanchez', '999678227', 'a'),
+(3, 'enrique@gmail.com', '202cb962ac59075b964b07152d234b70', 'enrique', 'salazar', 'montevideo', '932838328', 'e'),
+(4, 'melani123@gmail.com', 'bf6c13136ba681f8daa4fbd472cd404c', 'melani', 'porcella', 'quiroz', '928282817', 'e'),
+(5, 'melanimendoza122@gmail.com', '088ef99bff55c67dc863f83980a66a9b', 'melani', 'mendoza', 'salazar', '928282822', 'e');
 
 --
 -- Índices para tablas volcadas
@@ -301,13 +305,13 @@ ALTER TABLE `routes`
 -- AUTO_INCREMENT de la tabla `trips`
 --
 ALTER TABLE `trips`
-  MODIFY `trip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `trip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
