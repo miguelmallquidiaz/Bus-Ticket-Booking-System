@@ -25,4 +25,4 @@ El usuario, a través de la vista, solicita ver el listado de viajes. Esta solic
 - En XAMPP en la carpeta htdocs debes poner el proyecto
 - Debes importar la base de datos a MySQL desde el XAMPP
 - Debes activar Apache desde el XAMPP
-- La url es http://localhost/proyecto_viaje/
+- La url es http://localhost/Bus-Ticket-Booking-System/proyecto_viaje/index.php
