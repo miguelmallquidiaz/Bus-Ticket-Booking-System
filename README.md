@@ -17,12 +17,18 @@ El usuario, a través de la vista, solicita ver el listado de viajes. Esta solic
 
 ## Captura de pantalla:
 - Inicio de sesión
-<img src="https://github.com/miguelmallquidiaz/Bus-Ticket-Booking-System/blob/main/img/img1.PNG" height="400px" alt="MVC Architecture">
-
-
+<img src="https://github.com/miguelmallquidiaz/Bus-Ticket-Booking-System/blob/main/img/img1.PNG" height="400px" alt="login">
+- Validación de inicio de sesión
+<img src="https://github.com/miguelmallquidiaz/Bus-Ticket-Booking-System/blob/main/img/img2.PNG" height="400px" alt="validation">
+- Pantalla de inicio del empleado
+<img src="https://github.com/miguelmallquidiaz/Bus-Ticket-Booking-System/blob/main/img/img3.PNG" height="400px" alt="employee">
+- Pantalla de inicio del administrador
+<img src="https://github.com/miguelmallquidiaz/Bus-Ticket-Booking-System/blob/main/img/img4.PNG" height="400px" alt="admin">
 
 ## Instalación y configuración:
 - En XAMPP en la carpeta htdocs debes poner el proyecto
 - Debes importar la base de datos a MySQL desde el XAMPP
-- Debes activar Apache desde el XAMPP
+- Debes activar Apache, Mysql y Tomcat desde el XAMPP Control Panel
 - La url es http://localhost/Bus-Ticket-Booking-System/proyecto_viaje/index.php
+- Empledo: miguel@gmail.com -> password: empleado
+- Admin: diego@gmail.com -> password: administrador
